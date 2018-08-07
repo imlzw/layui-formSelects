@@ -1,0 +1,109 @@
+.xm-select-parent .xm-left-white-block {position: absolute;	width: 9px; left:0px; height: 34px;background-color: #ffffff; }
+.xm-select-parent .xm-select-title div.xm-select-label>span i {position: absolute; margin-left: 8px; font-size: 12px; cursor: pointer; line-height: 24px;}
+.xm-select-parent .xm-select .xm-select-input {border: none;height: 28px;background-color: transparent;padding: 0;vertical-align: middle;display: inline-block;min-width: 100px;width:auto;}
+.xm-select-parent .xm-form-select dl {max-height:unset;}
+.xm-select-parent .xm-form-select dl ul{max-height:360px;overflow: auto;}
+.xm-select-parent .page .icon { display: inline-block; width: 16px; height: 16px; line-height: 16px; font-size: 1px; }
+.xm-select-parent .page a span { position: relative; margin: 6px 0px 0px 6px; display: inline-block; font-size: 12px;
+}
+.xm-select-parent .page {
+    margin-top: 6px;
+    padding:0;
+    line-height: unset !important;
+}
+.xm-select-parent .page > *{
+    vertical-align: middle;
+}
+.xm-select-parent .page a {
+    height: 28px;
+    display: inline-block;
+    width: 28px;
+    line-height: 28px;
+    border-radius:4px;
+    border: 1px solid #fff;
+}
+.xm-select-parent .page .page-disabled:hover {
+    background: transparent;
+    border: 1px solid #eee;
+    cursor:default;
+}
+.xm-select-parent .page .page-disabled span{
+    opacity: 0.5;
+}
+
+.xm-select-parent .page a:hover
+{
+    border: 1px solid #ccc;
+    background-color:rgb(230,230,230);
+}
+.xm-select-parent .page-first span { background: url(../../../images/pagination_icons.png) no-repeat 0 center; }
+.xm-select-parent .page-prev  span{ background: url(../../../images/pagination_icons.png) no-repeat -16px center; }
+.xm-select-parent .page-next  span{ background: url(../../../images/pagination_icons.png) no-repeat -32px center; }
+.xm-select-parent .page-last  span{ background: url(../../../images/pagination_icons.png) no-repeat -48px center; }
+/*.xm-select-parent .cover {*/
+    /*position: fixed;*/
+    /*display: inline-block;*/
+    /*top: 0;*/
+    /*margin: auto;*/
+    /*width: 100%;*/
+    /*height: 100% !important;*/
+    /*z-index: 9999;*/
+    /*background: rgba(0, 0, 0, 0.05);*/
+/*}*/
+.xm-select-parent .loading1 {
+    color: #a2a2a2;
+    opacity: 1;
+    margin: auto;
+    height: 30px;
+    width: 60px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+}
+
+.xm-select-parent .loading {
+    color: #a2a2a2;
+    opacity: 1;
+    margin: auto;
+    height: 30px;
+    width: 60px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 1px #b3b3b3 solid;
+    border-radius: 50%;
+    -webkit-animation: rotation 1s ease-in-out infinite;
+    -moz-animation: rotation 1s ease-in-out infinite;
+    animation: rotation 1s ease-in-out infinite;
+    text-align: center;
+}
+
+.xm-select-parent .loading:after {
+    width: 5px;
+    height: 5px;
+    background-color: rgba(179,179,179,1);
+    border-radius: 100%;
+    position: absolute;
+    content: "";
+}
+.xm-select-parent cover1:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.1);
+    height: 100%;
+
+}
+
+@keyframes rotation{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
