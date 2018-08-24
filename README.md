@@ -119,3 +119,47 @@ QQ 号: 707200833
 ## 更新记录
 
 [4.0.0.0713](https://hnzzmsf.github.io/layui-formSelects/docs/index.html#/module2/log)
+
+## 友情链接
+[码云formSelects](https://gitee.com/imlzw/formSelects)
+
+新增：
+1. 分页加载功能：
+
+![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/142701_d96e11a7_432156.png "QQ截图20180807142634.png")
+
+```
+
+<select id="industry_category_select"  name="industryCategory" xm-select-search=""  lay-verify="required" xm-select-radio="" 
+  placeholder="行业" autocomplete="off" xm-select-height="36px" xm-select-skin="normal" xm-select="industry_category_select" lay-filter="industry_category_select" >
+  <option value="">请选择行业类别</option>
+</select>
+						    
+<script>
+layui.formSelects.data('industry_select',"server", {
+    url: '/industryList',
+    showPage: true,
+    size: 6
+});
+</script>
+```
+
+2.级联异步加载功能
+
+![输入图片说明](https://images.gitee.com/uploads/images/2018/0807/142733_677c24e7_432156.png "QQ截图20180807142558.png")
+
+
+
+```
+<select name="orgArea" xm-select="orgArea" lay-verify="required"  xm-select-radio="" xm-select-skin="normal">
+    <option value="">请选择单位所在省市区</option>
+</select>
+
+<script>
+layui.formSelects.data('orgArea', 'server', {
+    url: '/city',
+    linkage: true,
+    linkageWidth: 130
+});
+</script>
+```
