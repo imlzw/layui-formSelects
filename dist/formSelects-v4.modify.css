@@ -3,6 +3,7 @@
 .xm-select-parent .xm-select .xm-select-input {border: none;height: 28px;background-color: transparent;padding: 0;vertical-align: middle;display: inline-block;min-width: 100px;width:auto;}
 .xm-select-parent .xm-form-select dl {max-height:unset;}
 .xm-select-parent .xm-form-select dl ul{max-height:360px;overflow: auto;}
+.xm-select-parent .xm-form-select dl .iconfont.icon-sousuo { top:53px;}
 .xm-select-parent .page .icon { display: inline-block; width: 16px; height: 16px; line-height: 16px; font-size: 1px; }
 .xm-select-parent .page a span { position: relative; margin: 6px 0px 0px 6px; display: inline-block; font-size: 12px;
 }
