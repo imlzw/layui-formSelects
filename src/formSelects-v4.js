@@ -1,7 +1,7 @@
 /**
  * name: formSelects
  * 基于Layui Select多选
- * version: 4.0.0.0713
+ * version: 4.0.0.0714
  * http://sun.faysunshine.com/layui/formSelects-v4/dist/formSelects-v4.js
  */
 (function (layui, window, factory) {
@@ -490,6 +490,7 @@
         let ajaxData = {values:labelValues}
         let reElem = $(`div.${PNAME}[FS_ID=${id}]`);
         let labelElem = reElem.find(`.${LABEL}`);
+        ajaxData = $.extend(true, {}, ajaxConfig.data, ajaxData);
         $.ajax({
             type: ajaxConfig.type,
             headers: ajaxConfig.header,
@@ -528,7 +529,7 @@
                     labelElem.find('.label-loading-msg').remove()
                     res.data.forEach((val,index) => {
                         // 添加label标签
-                        common.handlerLabel(id, null, true, {name: val.name, val: val.value }, true);
+                        common.handlerLabel(id, null, true, {name: val[ajaxConfig.keyName], val: val[ajaxConfig.keyVal] }, true);
                     })
                 }
             },
@@ -807,7 +808,7 @@
             });
             values.forEach((item, index) => {
                 if (this.indexOf(oldVal, item) == -1) {
-                    this.addLabel(id, label, item);
+                    // this.addLabel(id, label, item);
                     dl.find(`dd[lay-value="${item.val}"]`).addClass(THIS);
                     oldVal.push(item);
                 }
@@ -1371,7 +1372,7 @@
                 dl.find('.xm-select-linkage')[0] && this.linkageAdd(id, val)
             )),
                 this.addLabel(id, label, val),
-                vals.push(val)
+                this.push(vals, val)
         ) : (
             (dd && dd[0] ? (
                 dd.removeClass(THIS)
@@ -1409,6 +1410,9 @@
      */
     Common.prototype.addLabel = function (id, label, val) {
         if (!val) return;
+        if(label.find(`span[value=${val.val}]`).length>0) {
+            return;
+        }
         let tips = `fsw="${NAME}"`;
         let [$label, $close] = [
             $(`<span ${tips} value="${val.val}"><font ${tips}>${val.name}</font></span>`),
@@ -1565,6 +1569,14 @@
             }
         }
         return -1;
+    }
+
+    Common.prototype.push = function (arr, val) {
+        let idx = this.indexOf(arr, val ? val.val : val);
+        if (idx < 0) {
+            arr.push(val);
+        }
+        return true;
     }
 
     Common.prototype.remove = function (arr, val) {
@@ -1798,7 +1810,7 @@
                             unLabelValue.push(val);
                             // 找不到级联的值
                         }
-                    } else if (ajaxConfig.showPage == true) { // 如果是分页数据
+                    } else if (ajaxConfig.dataSource == 'server') { // 如果是分页数据
                         // 如果已经存在于dom中
                         if ((dd = dl.find(`dd[lay-value="${val}"]`))[0]) {
                             common.handlerLabel(id, dd, isAdd, null, true);
@@ -1817,11 +1829,11 @@
             });
             // 请求未标签化的值
             if (unLabelValue.length > 0) {
-                if (ajaxConfig.linkage == true) { // 如果是级联数据
+                // if (ajaxConfig.linkage == true) { // 如果是级联数据
+                //     common.ajaxLabelValue(id, unLabelValue);
+                // } else if(ajaxConfig.dataSource == 'server'){ // 如果是分页数据
                     common.ajaxLabelValue(id, unLabelValue);
-                } else if(ajaxConfig.showPage == true){ // 如果是分页数据
-                    common.ajaxLabelValue(id, unLabelValue);
-                }
+                // }
             }
         }
     }
@@ -1945,6 +1957,7 @@
         !common.check(id) && this.render(id);
         // 设置数据时，清空搜索input
         common.clearInput(id);
+        config.dataSource=type
         this.config(id, config);
         if (type == 'local') {
             this.value(id, []);
