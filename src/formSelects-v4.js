@@ -1,7 +1,7 @@
 /**
  * name: formSelects
  * 基于Layui Select多选
- * version: 4.0.0.0714
+ * version: 4.0.0.0715
  * http://sun.faysunshine.com/layui/formSelects-v4/dist/formSelects-v4.js
  */
 (function (layui, window, factory) {
@@ -1410,8 +1410,10 @@
      */
     Common.prototype.addLabel = function (id, label, val) {
         if (!val) return;
-        if(label.find(`span[value=${val.val}]`).length>0) {
-            return;
+        if(val.val.indexOf('/')<0){
+            if(label.find(`span[value=${val.val}]`).length>0) {
+                return;
+            }
         }
         let tips = `fsw="${NAME}"`;
         let [$label, $close] = [
